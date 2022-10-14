@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducer';
 
 @Component({
   selector: 'app-navbar',
@@ -8,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  userName!: string | undefined
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
+    this.store.select('user')
+      .subscribe(user => {
+        this.userName = user.user?.nombre
+      })
+
   }
 
 }
