@@ -44,7 +44,7 @@ export class AuthService {
         //
       }else{
         this._userN = null
-        this.userSubscription.unsubscribe();
+        this.userSubscription?.unsubscribe();
         this.store.dispatch(authActions.unSetUser())
         this.store.dispatch(ingEgresoActions.unSetItems());
       }
